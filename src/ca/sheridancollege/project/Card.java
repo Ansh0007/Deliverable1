@@ -12,7 +12,7 @@ package ca.sheridancollege.project;
  * @author dancye
  */
  public abstract class Card
-    {
+    { 
     private String color;
     private int value;
     //array is added for colors and values.
@@ -30,6 +30,7 @@ package ca.sheridancollege.project;
 
     public boolean isGreaterThan(Card card) {
         return (this.value > card.getValue());
+        
     }
 }
 
