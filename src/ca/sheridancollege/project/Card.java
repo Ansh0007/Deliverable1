@@ -11,15 +11,25 @@ package ca.sheridancollege.project;
  *
  * @author dancye
  */
-public abstract class Card {
-    //default modifier for child classes
+ public abstract class Card
+    {
+    private String color;
+    private int value;
+    //array is added for colors and values.
+    public static String colors[] = {"hearts", "tiles", "clovers", "pikes"};
+    public static int values[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 
-    /**
-     * Students should implement this method for their specific children classes
-     *
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
-     */
-    @Override
-    public abstract String toString();
+    public Card(int val, String col) { //constructor is added
+        this.color = col;
+        this.value = val;
+    }
 
+    public int getValue() { //returns the value of value.
+        return this.value;
+    }
+
+    public boolean isGreaterThan(Card card) {
+        return (this.value > card.getValue());
+    }
 }
+
