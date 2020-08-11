@@ -7,6 +7,7 @@ package ca.sheridancollege.project;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 /**
  * The class that models your game. You should create a more specific child of this class and instantiate the methods
@@ -17,13 +18,21 @@ import java.util.Collections;
 public class Game
 {
 
-     //main method added to insert 2 players
-    public static void main(String[] args) {
-        Player p1 = new Player("Player 1");
-        Player p2 = new Player("Player 2");
+      public static void main(String[] args) {
+        char choice=0;
+        int scoreA=0;
+        int scoreB=0;
+        do{
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Please enter Player 1  ");
+        String pr1=sc.nextLine();
+        System.out.print("Please enter Player 2  ");
+        String pr2=sc.nextLine();
         
-         int scoreA=0;   //score variable for both players initialised to 0
-         int scoreB=0;
+      
+        
+        Player p1 = new Player(pr1);
+        Player p2 = new Player(pr2);
         
         ArrayList<Card> deck = new ArrayList<>();
 
@@ -37,7 +46,7 @@ public class Game
         }
 
         // Mix cards
-        Collections.shuffle(deck); 
+        Collections.shuffle(deck);
 
         // Divide the deck evenly among the two players
         for (int i = 0; i < deck.size(); i = i + 2) {
@@ -46,7 +55,7 @@ public class Game
            
         }
 
-        int gains = 1;  //gains are initialised to 1
+        int gains = 1;
         for (int i = p1.getStack().size(); i > 0; i--) {
             if (p1.getStack().get(i - 1).isGreaterThan(p2.getStack().get(i - 1))) {
                 p1.setPoints(gains);
@@ -60,11 +69,10 @@ public class Game
         }
             
             
-           
-        if (p1.getPoints() > p2.getPoints()) {   //checking the winner
+
+        if (p1.getPoints() > p2.getPoints()) {
             System.out.println(p1.getName() + " wins");
             scoreA++;
-            
             
             
         } else if (p2.getPoints() > p1.getPoints()) {
@@ -76,16 +84,23 @@ public class Game
         } else {
             System.out.println("Draw");
         }
+       
         
         }
-        if(scoreA>scoreB){      //displaying if winner is A
-            System.out.printf("Player A wins with score = %d%n",scoreA);
+         if(scoreA>scoreB){      //displaying if winner is first player
+            System.out.printf(pr1+" wins with score = %d%n",scoreA);
             
         }
-        else if(scoreB>scoreA){   //displaying if winner is B
-            System.out.printf("Player B wins with score = %d%n",scoreB);
+        else if(scoreB>scoreA){   //displaying if winner is second player
+            System.out.printf(pr2+" wins with score = %d%n",scoreB);
         }
         else
             System.out.println("Draw");
+    
+        System.out.println("Do you want to play again? Y/N");
+        choice=sc.next().toUpperCase().charAt(0);
+        
+        }while(choice=='Y');
+        System.out.println("Thank You for playing!!");
     }
 }
