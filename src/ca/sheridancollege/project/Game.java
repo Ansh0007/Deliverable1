@@ -24,9 +24,9 @@ public class Game
         int scoreB=0;
         do{
         Scanner sc=new Scanner(System.in);
-        System.out.print("Please enter Player 1  ");
+        System.out.print("Please enter name of Player 1  ");
         String pr1=sc.nextLine();
-        System.out.print("Please enter Player 2  ");
+        System.out.print("Please enter name of Player 2  ");
         String pr2=sc.nextLine();
         
       
@@ -68,9 +68,7 @@ public class Game
                 gains++;
         }
             
-            
-
-        if (p1.getPoints() > p2.getPoints()) {
+            if (p1.getPoints() > p2.getPoints()) {
             System.out.println(p1.getName() + " wins");
             scoreA++;
             
@@ -87,11 +85,12 @@ public class Game
        
         
         }
-         if(scoreA>scoreB){      //displaying if winner is first player
+        
+         if ( scoreA>scoreB ){      //displaying if winner is first player
             System.out.printf(pr1+" wins with score = %d%n",scoreA);
             
         }
-        else if(scoreB>scoreA){   //displaying if winner is second player
+        else if ( scoreB>scoreA ){   //displaying if winner is second player
             System.out.printf(pr2+" wins with score = %d%n",scoreB);
         }
         else
